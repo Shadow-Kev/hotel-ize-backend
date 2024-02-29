@@ -4,8 +4,8 @@ using FSH.WebApi.Domain.Ize;
 namespace FSH.WebApi.Application.Ize.TypeChambres;
 public class CreateTypeChambreRequest : IRequest<Guid>
 {
-    public string Code { get; private set; } = default!;
-    public string Libelle { get; private set; } = default!;
+    public string Code { get; set; } = default!;
+    public string Libelle { get; set; } = default!;
 }
 
 public class CreateTypeChambreRequestHandler : IRequestHandler<CreateTypeChambreRequest, Guid>
@@ -16,7 +16,10 @@ public class CreateTypeChambreRequestHandler : IRequestHandler<CreateTypeChambre
     {
         _repository = repository;
     }
-    public async Task<DefaultIdType> Handle(CreateTypeChambreRequest request, CancellationToken cancellationToken)
+
+
+
+    public async Task<Guid> Handle(CreateTypeChambreRequest request, CancellationToken cancellationToken)
     {
         var typeChambre = new TypeChambre(request.Code, request.Libelle);
         typeChambre.DomainEvents.Add(EntityCreatedEvent.WithEntity(typeChambre));
