@@ -3,9 +3,6 @@
 namespace FSH.WebApi.Application.Ize.TypeChambres;
 public class CreateTypeChambreRequestValidator : CustomValidator<CreateTypeChambreRequest>
 {
-
-    
-
     public CreateTypeChambreRequestValidator(IReadRepository<TypeChambre> typeChambreRepo, IStringLocalizer<CreateTypeChambreRequestValidator> T)
     {
         RuleFor(tc => tc.Code)

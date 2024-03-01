@@ -6,7 +6,7 @@ public class GetAllTypeChambreRequest : IRequest<List<TypeChambreDto>>
     public GetAllTypeChambreRequest() {}
 }
 
-public class GetAllTypeChambreSpec : Specification<TypeChambre, List<TypeChambreDto>>
+public class GetAllTypeChambreSpec : Specification<TypeChambre, TypeChambreDto>
 {
 }
 
@@ -21,6 +21,6 @@ public class GetAllTypeChambreRequestHandler : IRequestHandler<GetAllTypeChambre
     }
 
     public async Task<List<TypeChambreDto>> Handle(GetAllTypeChambreRequest request, CancellationToken cancellationToken) =>
-        await _repository.GetBySpecAsync((ISpecification<TypeChambre, List<TypeChambreDto>>)new GetAllTypeChambreSpec(), cancellationToken)
+        await _repository.ListAsync<TypeChambreDto>(new GetAllTypeChambreSpec(), cancellationToken)
         ?? throw new NotFoundException(_t["Aucun type de chambre trouvé."]);
 }
