@@ -22,6 +22,7 @@
     "Storage": {
       "StorageProvider": "postgresql",
       "ConnectionString": "Host=localhost;Port=5432;Database=IzeDB;Username=postgres;Password=devjack@@tech;Include Error Detail=true",
+      //"ConnectionString": "Host=localhost;Port=5432;Database=IzeDB;Username=postgres;Password=Steph@nie94;Include Error Detail=true"
       //"ConnectionString": "Host=173.212.228.38;Port=5432;Database=IzeDB;Username=ize;Password=hotelIZEpassword;sslmode=Require;Trust Server Certificate=true;Include Error Detail=true",
       "Options": {
         "CommandBatchMaxTimeout": "00:05:00",
