@@ -39,7 +39,7 @@ public class TypeChambresController : VersionedApiController
     }
 
     [HttpPost("search")]
-    [MustHavePermission(FSHAction.View, FSHResource.TypeChambres)]
+    [MustHavePermission(FSHAction.Search, FSHResource.TypeChambres)]
     [OpenApiOperation("Recherche de type chambre avec filtre", "")]
     public Task<PaginationResponse<TypeChambreDto>> SearchAsync(TypeChambresBySearchRequest request)
     {
