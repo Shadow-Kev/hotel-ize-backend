@@ -1,5 +1,4 @@
 ﻿using FSH.WebApi.Application.Ize.Agents;
-using FSH.WebApi.Application.Ize.TypeChambres;
 
 namespace FSH.WebApi.Host.Controllers.Ize;
 

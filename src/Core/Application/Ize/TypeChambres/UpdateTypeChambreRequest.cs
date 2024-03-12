@@ -6,7 +6,6 @@ public class UpdateTypeChambreRequest : IRequest<Guid>
 {
     public Guid Id { get; set; }
     public string Code { get; set; } = default!;
-
     public string Libelle { get; set; } = default!;
 }
 
