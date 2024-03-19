@@ -4,6 +4,8 @@ using FSH.WebApi.Domain.Ize;
 namespace FSH.WebApi.Application.Ize.Chambres;
 public class ChambreBySearchRequest : PaginationFilter, IRequest<PaginationResponse<ChambreDto>>
 {
+    public Guid? TypeChambreId { get; set; }
+    public decimal? Prix { get; set; }
 }
 
 public class ChambreBySearchRequestHandler : IRequestHandler<ChambreBySearchRequest, PaginationResponse<ChambreDto>>
