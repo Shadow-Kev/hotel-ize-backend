@@ -77,11 +77,12 @@ public static class FSHPermissions
         new("Delete TypeChambres", FSHAction.Delete, FSHResource.TypeChambres),
         new("View TypeChambres", FSHAction.View, FSHResource.TypeChambres),
 
+        new("View Chambres", FSHAction.View, FSHResource.Chambres),
         new("Create Chambres", FSHAction.Create, FSHResource.Chambres),
         new("Search Chambres", FSHAction.Search, FSHResource.Chambres),
         new("Update Chambres", FSHAction.Update, FSHResource.Chambres),
         new("Delete Chambres", FSHAction.Delete, FSHResource.Chambres),
-        new("View Chambres", FSHAction.View, FSHResource.Chambres),
+        new("Export Chambres", FSHAction.Export, FSHResource.Chambres),
 
         new("Create Agents", FSHAction.Create, FSHResource.Agents),
         new("Search Agents", FSHAction.Search, FSHResource.Agents),
