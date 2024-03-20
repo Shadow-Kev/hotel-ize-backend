@@ -14,7 +14,7 @@ public class ChambresController : VersionedApiController
     [HttpGet("{id:guid}")]
     [MustHavePermission(FSHAction.View, FSHResource.Chambres)]
     [OpenApiOperation("Get Chambre ", "")]
-    public Task<ChambreDto> GetAsync(Guid id)
+    public Task<ChambreDetailsDto> GetAsync(Guid id)
     {
         return Mediator.Send(new GetChambreRequest(id));
     }
@@ -22,7 +22,7 @@ public class ChambresController : VersionedApiController
     [HttpGet]
     [MustHavePermission(FSHAction.View, FSHResource.Chambres)]
     [OpenApiOperation("Get tous les Chambres ", "")]
-    public Task<List<ChambreDto>> GetAllAsync()
+    public Task<List<ChambreDetailsDto>> GetAllAsync()
     {
         return Mediator.Send(new GetAllChambreRequest());
     }
@@ -39,8 +39,8 @@ public class ChambresController : VersionedApiController
 
     [HttpPost("search")]
     [MustHavePermission(FSHAction.Search, FSHResource.Chambres)]
-    [OpenApiOperation("Recherche d' Chambre avec filtre", "")]
-    public Task<PaginationResponse<ChambreDto>> SearchAsync(ChambreBySearchRequest request)
+    [OpenApiOperation("Recherche des Chambres avec filtre", "")]
+    public Task<PaginationResponse<ChambreDto>> SearchAsync(SearchChambresRequest request)
     {
         return Mediator.Send(request);
     }
