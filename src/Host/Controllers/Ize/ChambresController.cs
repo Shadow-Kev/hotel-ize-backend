@@ -19,6 +19,16 @@ public class ChambresController : VersionedApiController
         return Mediator.Send(request);
     }
 
+    [HttpPut("{id:guid}")]
+    [MustHavePermission(FSHAction.Update, FSHResource.Chambres)]
+    [OpenApiOperation("Mise à jour d'une chambre", "")]
+    public async Task<ActionResult<Guid>> UpdateAsync(UpdateChambreRequest request, Guid id)
+    {
+        return id != request.Id
+            ? BadRequest()
+            : Ok(await Mediator.Send(request));
+    }
+
     [HttpGet("{id:guid}")]
     [MustHavePermission(FSHAction.View, FSHResource.Chambres)]
     [OpenApiOperation("Get Chambre ", "")]
@@ -33,16 +43,6 @@ public class ChambresController : VersionedApiController
     public Task<List<ChambreDetailsDto>> GetAllAsync()
     {
         return Mediator.Send(new GetAllChambreRequest());
-    }
-
-    [HttpPut("{id:guid}")]
-    [MustHavePermission(FSHAction.Update, FSHResource.Chambres)]
-    [OpenApiOperation("Mettre à jour un Chambre.", "")]
-    public async Task<ActionResult<Guid>> UpdateAsync(UpdateChambreRequest request, Guid id)
-    {
-        return id != request.Id
-            ? BadRequest()
-            : Ok(await Mediator.Send(request));
     }
 
     [HttpDelete("{id:guid}")]

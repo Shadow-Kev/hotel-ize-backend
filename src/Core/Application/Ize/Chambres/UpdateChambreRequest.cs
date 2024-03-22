@@ -22,7 +22,7 @@ public class UpdateChambreRequestHandler : IRequestHandler<UpdateChambreRequest,
     private readonly IFileStorageService _file;
     private readonly IStringLocalizer _localizer;
 
-    public UpdateChambreRequestHandler(IRepository<Chambre> repository, IStringLocalizer<UpdateChambreRequestHandler> localizer, IFileStorageService file)
+    public UpdateChambreRequestHandler(IRepository<Chambre> repository, IFileStorageService file, IStringLocalizer<UpdateChambreRequestHandler> localizer)
     {
         _repository = repository;
         _file = file;
