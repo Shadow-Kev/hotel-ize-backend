@@ -1,7 +1,6 @@
 ﻿using FSH.WebApi.Application.Ize.TypeChambres;
 using FSH.WebApi.Domain.Ize;
 
-
 public class TypeChambresBySearchRequest : PaginationFilter, IRequest<PaginationResponse<TypeChambreDto>>
 {
 }
