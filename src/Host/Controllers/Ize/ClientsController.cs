@@ -14,6 +14,22 @@ public class ClientsController : VersionedApiController
             : Ok(await Mediator.Send(request));
     }
 
+    [HttpGet]
+    [MustHavePermission(FSHAction.View, FSHResource.Clients)]
+    [OpenApiOperation("Get tous les clients ", "")]
+    public Task<List<ClientDetailsDto>> GetAllAsync()
+    {
+        return Mediator.Send(new GetAllClientRequest());
+    }
+
+    [HttpGet("{id:guid}")]
+    [MustHavePermission(FSHAction.View, FSHResource.Clients)]
+    [OpenApiOperation("Get Client ", "")]
+    public Task<ClientDetailsDto> GetAsync(Guid id)
+    {
+        return Mediator.Send(new GetClientRequest(id));
+    }
+
     [HttpDelete("{id:guid}")]
     [MustHavePermission(FSHAction.Delete, FSHResource.Clients)]
     [OpenApiOperation("Supprimer un client", "")]
