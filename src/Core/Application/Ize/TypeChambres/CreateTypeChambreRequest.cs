@@ -17,8 +17,6 @@ public class CreateTypeChambreRequestHandler : IRequestHandler<CreateTypeChambre
         _repository = repository;
     }
 
-
-
     public async Task<Guid> Handle(CreateTypeChambreRequest request, CancellationToken cancellationToken)
     {
         var typeChambre = new TypeChambre(request.Code, request.Libelle);
