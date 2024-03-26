@@ -31,7 +31,7 @@ public class Chambre : AuditableEntity, IAggregateRoot
         TypeChambreId = typeChambreId;
     }
 
-    public Chambre Update(string? nom, int? capacite, decimal? prix, string? imagePath, bool? disponible, bool? climatisee, bool? petitDejeunerInclus, Guid? typeChambreId, ICollection<Client>? clients)
+    public Chambre Update(string? nom, int? capacite, decimal? prix, string? imagePath, bool? disponible, bool? climatisee, bool? petitDejeunerInclus, Guid? typeChambreId/*, ICollection<Client>? clients*/)
     {
         if (nom is not null && Nom.Equals(nom))
             Nom = nom;
@@ -39,8 +39,7 @@ public class Chambre : AuditableEntity, IAggregateRoot
             Capacite = capacite.Value;
         if (prix.HasValue && Prix != prix)
             Prix = prix.Value;
-        if (imagePath is not null && !ImagePath.Equals(imagePath))
-            ImagePath = imagePath;
+        if (imagePath is not null && ImagePath?.Equals(imagePath) is not true) ImagePath = imagePath;
         if (disponible is not null && Disponible.Equals(disponible) is not true)
             Disponible = disponible.Value;
         if (climatisee is not null && Climatisee.Equals(climatisee) is not true)
@@ -49,12 +48,12 @@ public class Chambre : AuditableEntity, IAggregateRoot
             PetitDejeunerInclus = petitDejeunerInclus.Value;
         if (typeChambreId.HasValue && typeChambreId.Value != Guid.Empty && !TypeChambreId.Equals(typeChambreId))
             TypeChambreId = typeChambreId.Value;
-        if (clients is not null && clients.Any())
-        {
-            Clients.Clear();
-            foreach (var client in clients)
-                Clients.Add(client);
-        }
+        ////if (clients is not null && clients.Any())
+        ////{
+        ////    Clients.Clear();
+        ////    foreach (var client in clients)
+        ////        Clients.Add(client);
+        ////}
 
         return this;
     }
@@ -65,8 +64,5 @@ public class Chambre : AuditableEntity, IAggregateRoot
         return this;
     }
 
-    public Chambre Update(string nom, int capacite, decimal prix, string? imagePath, bool disponible, bool climatisee, bool petitDejeunerInclus, DefaultIdType typeChambreId)
-    {
-        throw new NotImplementedException();
-    }
+   
 }
