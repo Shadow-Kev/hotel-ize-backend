@@ -42,8 +42,8 @@ public class UpdateClientRequestHandler : IRequestHandler<UpdateClientRequest, G
     public async Task<Guid> Handle(UpdateClientRequest request, CancellationToken cancellationToken)
     {
         var client = await _repository.GetByIdAsync(request.Id, cancellationToken);
-        _ = client ?? throw new NotFoundException(_localizer["Chambre {0} non trouvé", request.Id]);
-        var updatedClient = new Client(request.Nom, request.Prenom, request.NomDeJeuneFille, request.LieuDeNaissance, request.Nationalite,
+        _ = client ?? throw new NotFoundException(_localizer["Client {0} non trouvé", request.Id]);
+        var updatedClient = client.Update(request.Nom, request.Prenom, request.NomDeJeuneFille, request.LieuDeNaissance, request.Nationalite,
             request.Profession, request.Domicile, request.MotifDuVoyage, request.VenantDe, request.AllantA, request.DateArrive,
             request.DateDepart, request.Identite, request.DateIdentiteDelivreeLe, request.Contact, request.Email, request.PersonneAPrevenir,
             request.AgentId, request.ChambreId);
