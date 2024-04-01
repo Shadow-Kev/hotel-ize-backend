@@ -4,6 +4,14 @@ namespace FSH.WebApi.Host.Controllers.Ize;
 
 public class ClientsController : VersionedApiController
 {
+    [HttpPost("search")]
+    [MustHavePermission(FSHAction.Search, FSHResource.Clients)]
+    [OpenApiOperation("Search clients avec les filtres disponibles", "")]
+    public Task<PaginationResponse<ClientDto>> SearchAsync(SearchClientsRequest request)
+    {
+        return Mediator.Send(request);
+    }
+
     [HttpPut("{id:guid}")]
     [MustHavePermission(FSHAction.Update, FSHResource.Clients)]
     [OpenApiOperation("Mise à jour d'un client", "")]
