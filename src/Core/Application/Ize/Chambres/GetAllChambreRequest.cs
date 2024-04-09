@@ -1,5 +1,4 @@
-﻿using FSH.WebApi.Application.Ize.TypeChambres;
-using FSH.WebApi.Domain.Ize;
+﻿using FSH.WebApi.Domain.Ize;
 
 namespace FSH.WebApi.Application.Ize.Chambres;
 public class GetAllChambreRequest : IRequest<List<ChambreDetailsDto>>
