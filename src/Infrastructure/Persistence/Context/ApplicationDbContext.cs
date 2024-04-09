@@ -22,6 +22,7 @@ public class ApplicationDbContext : BaseDbContext
     public DbSet<Chambre> Chambres => Set<Chambre>();
     public DbSet<Agent> Agents => Set<Agent>();
     public DbSet<Client> Clients => Set<Client>();
+    public DbSet<Vente> Ventes => Set<Vente>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
