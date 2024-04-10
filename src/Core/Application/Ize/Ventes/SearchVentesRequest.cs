@@ -4,10 +4,10 @@ using FSH.WebApi.Domain.Ize;
 namespace FSH.WebApi.Application.Ize.Ventes;
 public class SearchVentesRequest : PaginationFilter, IRequest<PaginationResponse<VenteDto>>
 {
-    public Guid ProductId { get; set; }
-    public Guid AgentId { get; set; }
-    public decimal Prix { get; set; }
-    public int Quantite { get; set; }
+    public Guid? ProductId { get; set; }
+    public Guid? AgentId { get; set; }
+    public decimal? Prix { get; set; }
+    public int? Quantite { get; set; }
 }
 
 public class SearchVentesRequestHandler : IRequestHandler<SearchVentesRequest, PaginationResponse<VenteDto>>
@@ -34,7 +34,7 @@ public class SearchVentesRequestHandler : IRequestHandler<SearchVentesRequest, P
                 Quantite = c.Quantite,
                 AgentNom = c.AgentNom,
                 AgentId = c.AgentId,
-                ProductNom = c.ProductNom,
+                ProductNom = productNom,
                 ProductId = c.ProductId,
             });
         }

@@ -86,7 +86,7 @@ public static class FSHPermissions
         new("Delete Chambres", FSHAction.Delete, FSHResource.Chambres),
         new("Export Chambres", FSHAction.Export, FSHResource.Chambres),
 
-         new("View Ventes", FSHAction.View, FSHResource.Ventes),
+        new("View Ventes", FSHAction.View, FSHResource.Ventes),
         new("Create Ventes", FSHAction.Create, FSHResource.Ventes),
         new("Search Ventes", FSHAction.Search, FSHResource.Ventes),
         new("Update Ventes", FSHAction.Update, FSHResource.Ventes),

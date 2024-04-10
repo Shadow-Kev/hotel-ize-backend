@@ -6,8 +6,9 @@ public class VenteBySearchRequestWithProduitSpec : EntitiesByPaginationFilterSpe
     public VenteBySearchRequestWithProduitSpec(SearchVentesRequest request)
          : base(request) =>
         Query
-            .Include(c => c.Product)
-            .Include(c => c.Agent)
-            .OrderBy(c => c.Quantite, !request.HasOrderBy())
-            .Where(c => c.ProductId.Equals(request.ProductId) & c.AgentId.Equals(request.AgentId));   
+            .Include(v => v.Product)
+            .Include(v => v.Agent)
+            .OrderBy(v => v.Quantite, !request.HasOrderBy())
+            .Where(v => v.ProductId.Equals(request.ProductId), request.ProductId.HasValue)
+            .Where(v => v.AgentId.Equals(request.AgentId), request.AgentId.HasValue);
 }
