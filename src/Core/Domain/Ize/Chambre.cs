@@ -63,6 +63,4 @@ public class Chambre : AuditableEntity, IAggregateRoot
         ImagePath = string.Empty;
         return this;
     }
-
-   
 }
