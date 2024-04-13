@@ -15,7 +15,7 @@ public class DeleteTypeReservationRequestHandler : IRequestHandler<DeleteTypeRes
     private readonly IRepository<Reservation> _reservationRepo;
     private readonly IStringLocalizer _localizer;
 
-    public DeleteTypeReservationRequestHandler(IRepositoryWithEvents<TypeReservation> typeReservationRepo, IRepository<Reservation> reservationRepo, IStringLocalizer<DeletetypeReservationRequestHandler> localizer)
+    public DeleteTypeReservationRequestHandler(IRepositoryWithEvents<TypeReservation> typeReservationRepo, IRepository<Reservation> reservationRepo, IStringLocalizer<DeleteTypeReservationRequestHandler> localizer)
     {
         _typeReservationRepo = typeReservationRepo;
         _reservationRepo = reservationRepo;
