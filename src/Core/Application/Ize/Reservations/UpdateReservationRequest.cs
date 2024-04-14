@@ -11,7 +11,7 @@ public class UpdateReservationRequest : IRequest<Guid>
     public Guid? ChambreId { get; set; }
     public Statut StatutReservation { get; set; }
     public Guid TypeReservationId { get; set; }
-    public DateTime? DateArrive { get; private set; }
+    public DateTime? DateArrive { get;  set; }
 
 }
 
@@ -30,7 +30,10 @@ public class UpdateReservationRequestHandler : IRequestHandler<UpdateReservation
     {
         var reservation = await _repository.GetByIdAsync(request.Id, cancellationToken);
         _ = reservation ?? throw new NotFoundException(_localizer["Reservation {0} non trouvé", request.Id]);
+        if(request.StatutReservation == Statut.TERMINE)
+        {
 
+        }
         var updatedReservation = reservation.Update(request.Nom, request.Prenom, request.ChambreId, request.TypeReservationId, request.StatutReservation, request.DateArrive);
         reservation.DomainEvents.Add(EntityUpdatedEvent.WithEntity(reservation));
         await _repository.UpdateAsync(updatedReservation, cancellationToken);

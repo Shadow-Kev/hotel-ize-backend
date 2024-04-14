@@ -26,20 +26,20 @@ public class Reservation : AuditableEntity, IAggregateRoot
         DateArrive = dateArrive;
     }
 
-    public Reservation Update(string? nom, string? prenom, Guid? chambreId, Guid? typeReservationId, Statut? statut, DateTime? dateArrive)
+    public Reservation Update(string nom, string prenom, Guid? chambreId, Guid? typeReservationId, Statut statut, DateTime? dateArrive)
     {
-        if (nom is not null && Nom.Equals(nom))
+        if (nom is not null && Nom.Equals(nom) is not true)
             Nom = nom;
-        if (prenom is not null && Prenom.Equals(prenom))
+        if (prenom is not null && Prenom.Equals(prenom) is not true)
             Prenom = prenom;
         if (chambreId.HasValue && chambreId.Value != Guid.Empty && !ChambreId.Equals(chambreId))
             ChambreId = chambreId.Value;
         if (typeReservationId.HasValue && typeReservationId.Value != Guid.Empty && !TypeReservationId.Equals(typeReservationId))
             TypeReservationId = typeReservationId.Value;
-        if (statut.HasValue && StatutReservation != statut)
-            StatutReservation = statut.Value;
-        if (dateArrive.HasValue && DateArrive != dateArrive)
-            DateArrive = dateArrive;
+        if (statut != null && StatutReservation != statut)
+            StatutReservation = statut;
+        if (dateArrive.HasValue && dateArrive != DateArrive)
+            DateArrive = dateArrive.Value;
 
         return this;
     }
