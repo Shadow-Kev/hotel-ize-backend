@@ -12,4 +12,5 @@ public class ChambreDetailsDto : IDto
     public bool Climatisee { get; set; }
     public bool PetitDejeunerInclus { get; set; }
     public TypeChambre TypeChambre { get; set; } = default!;
+    public virtual ICollection<Client>? Clients { get; set; } = new HashSet<Client>();
 }
