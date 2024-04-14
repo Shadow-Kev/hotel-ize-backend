@@ -1,5 +1,6 @@
 using FSH.WebApi.Domain.Common.Events;
 using FSH.WebApi.Domain.Identity;
+using FSH.WebApi.Domain.Ize;
 using FSH.WebApi.Shared.Events;
 
 namespace FSH.WebApi.Application.Dashboard;
@@ -9,6 +10,14 @@ public class SendStatsChangedNotificationHandler :
     IEventNotificationHandler<EntityDeletedEvent<Brand>>,
     IEventNotificationHandler<EntityCreatedEvent<Product>>,
     IEventNotificationHandler<EntityDeletedEvent<Product>>,
+    IEventNotificationHandler<EntityCreatedEvent<Client>>,
+    IEventNotificationHandler<EntityDeletedEvent<Client>>,
+    IEventNotificationHandler<EntityCreatedEvent<Chambre>>,
+    IEventNotificationHandler<EntityDeletedEvent<Chambre>>,
+    IEventNotificationHandler<EntityCreatedEvent<TypeChambre>>,
+    IEventNotificationHandler<EntityDeletedEvent<TypeChambre>>,
+    IEventNotificationHandler<EntityCreatedEvent<Agent>>,
+    IEventNotificationHandler<EntityDeletedEvent<Agent>>,
     IEventNotificationHandler<ApplicationRoleCreatedEvent>,
     IEventNotificationHandler<ApplicationRoleDeletedEvent>,
     IEventNotificationHandler<ApplicationUserCreatedEvent>
@@ -32,6 +41,30 @@ public class SendStatsChangedNotificationHandler :
     public Task Handle(EventNotification<ApplicationRoleDeletedEvent> notification, CancellationToken cancellationToken) =>
         SendStatsChangedNotification(notification.Event, cancellationToken);
     public Task Handle(EventNotification<ApplicationUserCreatedEvent> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityCreatedEvent<Client>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityDeletedEvent<Client>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityCreatedEvent<Chambre>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityDeletedEvent<Chambre>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityCreatedEvent<TypeChambre>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityDeletedEvent<TypeChambre>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityCreatedEvent<Agent>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityDeletedEvent<Agent>> notification, CancellationToken cancellationToken) =>
         SendStatsChangedNotification(notification.Event, cancellationToken);
 
     private Task SendStatsChangedNotification(IEvent @event, CancellationToken cancellationToken)

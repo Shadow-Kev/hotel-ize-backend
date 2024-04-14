@@ -4,6 +4,10 @@ public class StatsDto
 {
     public int ProductCount { get; set; }
     public int BrandCount { get; set; }
+    public int ClientCount { get; set; }
+    public int ChambreCount { get; set; }
+    public int? TypeChambreCount { get; set; }
+    public int? ReservationCount { get; set; }
     public int UserCount { get; set; }
     public int RoleCount { get; set; }
     public List<ChartSeries> DataEnterBarChart { get; set; } = new();
