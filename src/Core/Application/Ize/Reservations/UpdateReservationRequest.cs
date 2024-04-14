@@ -8,7 +8,7 @@ public class UpdateReservationRequest : IRequest<Guid>
     public Guid Id { get; set; }
     public string Nom { get; set; } = default!;
     public string Prenom { get; set; } = default!;
-    public Guid ChambreId { get; set; }
+    public Guid? ChambreId { get; set; }
     public Statut StatutReservation { get; set; }
     public Guid TypeReservationId { get; set; }
     public DateTime? DateArrive { get; private set; }
@@ -20,7 +20,7 @@ public class UpdateReservationRequestHandler : IRequestHandler<UpdateReservation
     private readonly IRepository<Reservation> _repository;
     private readonly IStringLocalizer _localizer;
 
-    public UpdateReservationRequestHandler(IRepository<Reservation> repository,IStringLocalizer<UpdateReservationRequestHandler> localizer)
+    public UpdateReservationRequestHandler(IRepository<Reservation> repository, IStringLocalizer<UpdateReservationRequestHandler> localizer)
     {
         _repository = repository;
         _localizer = localizer;

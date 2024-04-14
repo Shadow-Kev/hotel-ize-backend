@@ -7,7 +7,7 @@ public class Reservation : AuditableEntity, IAggregateRoot
     public string Nom { get; private set; } = default!;
     public string Prenom { get; private set; } = default!;
     [ForeignKey(nameof(ChambreId))]
-    public virtual Chambre Chambre { get; private set; } = default!;
+    public virtual Chambre? Chambre { get; private set; } = default!;
     public Guid? ChambreId { get; private set; }
     public Statut StatutReservation { get; private set; }
 

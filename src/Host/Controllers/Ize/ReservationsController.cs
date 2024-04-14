@@ -3,6 +3,13 @@
 namespace FSH.WebApi.Host.Controllers.Ize;
 public class ReservationsController : VersionedApiController
 {
+    [HttpPost("search")]
+    [MustHavePermission(FSHAction.Search, FSHResource.Reservations)]
+    [OpenApiOperation("Recherche de reservation avec les filtres disponible", "")]
+    public Task<PaginationResponse<ReservationDto>> SearchAsync(SearchReservationsRequest request)
+    {
+        return Mediator.Send(request);
+    }
 
     [HttpPost]
     [MustHavePermission(FSHAction.Create, FSHResource.Reservations)]

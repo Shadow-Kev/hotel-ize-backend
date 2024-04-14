@@ -22,10 +22,10 @@ public class DeleteReservationRequestHandler : IRequestHandler<DeleteReservation
 
     public async Task<Guid> Handle(DeleteReservationRequest request, CancellationToken cancellationToken)
     {
-        var Reservation = await _repository.GetByIdAsync(request.Id, cancellationToken);
-        _ = Reservation ?? throw new NotFoundException(_localizer["Reservation {0} non trouvé", request.Id]);
-        Reservation.DomainEvents.Add(EntityDeletedEvent.WithEntity(Reservation));
-        await _repository.DeleteAsync(Reservation, cancellationToken);
+        var reservation = await _repository.GetByIdAsync(request.Id, cancellationToken);
+        _ = reservation ?? throw new NotFoundException(_localizer["Reservation {0} non trouvé", request.Id]);
+        reservation.DomainEvents.Add(EntityDeletedEvent.WithEntity(reservation));
+        await _repository.DeleteAsync(reservation, cancellationToken);
         return request.Id;
     }
 }
