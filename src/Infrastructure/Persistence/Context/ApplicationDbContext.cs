@@ -23,6 +23,8 @@ public class ApplicationDbContext : BaseDbContext
     public DbSet<Agent> Agents => Set<Agent>();
     public DbSet<Client> Clients => Set<Client>();
     public DbSet<Vente> Ventes => Set<Vente>();
+    public DbSet<TypeReservation> TypeReservations => Set<TypeReservation>();
+    public DbSet<Reservation> Reservations => Set<Reservation>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

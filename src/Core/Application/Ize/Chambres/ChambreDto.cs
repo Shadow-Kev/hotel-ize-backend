@@ -1,4 +1,5 @@
-﻿using FSH.WebApi.Domain.Ize;
+﻿using FSH.WebApi.Application.Ize.Clients;
+using FSH.WebApi.Domain.Ize;
 
 namespace FSH.WebApi.Application.Ize.Chambres;
 public class ChambreDto : IDto
@@ -13,5 +14,5 @@ public class ChambreDto : IDto
     public bool PetitDejeunerInclus { get; set; }
     public Guid TypeChambreId { get; set; }
     public string TypeChambreNom { get; set; } = default!;
-    public virtual ICollection<Client>? Clients { get; set; } = new HashSet<Client>();
+    public virtual ICollection<ClientDto>? Clients { get; set; } = new HashSet<ClientDto>();
 }

@@ -22,7 +22,7 @@ public class Agent : AuditableEntity, IAggregateRoot
             Prenoms = prenoms;
         if (nom is not null && !Nom.Equals(nom))
             Nom = nom;
-        if (isActive is not null && !Nom.Equals(nom))
+        if (isActive is not null && !IsActive.Equals(isActive))
             IsActive = isActive.Value;
         return this;
     }

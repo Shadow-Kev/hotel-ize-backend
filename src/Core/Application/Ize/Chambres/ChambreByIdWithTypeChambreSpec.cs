@@ -6,5 +6,6 @@ public class ChambreByIdWithTypeChambreSpec : Specification<Chambre, ChambreDeta
     public ChambreByIdWithTypeChambreSpec(Guid id) =>
         Query
             .Where(c => c.Id == id)
+            .Include(c=>c.Clients)
             .Include(c => c.TypeChambre);
 }
