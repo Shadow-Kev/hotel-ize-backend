@@ -58,6 +58,13 @@ public class Chambre : AuditableEntity, IAggregateRoot
         return this;
     }
 
+    public Chambre Update(bool? disponible)
+    {
+        if (disponible is not null && Disponible.Equals(disponible) is not true)
+            Disponible = disponible.Value;
+        return this;
+    }
+
     public Chambre ClearImagePath()
     {
         ImagePath = string.Empty;
