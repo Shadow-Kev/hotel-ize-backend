@@ -38,6 +38,7 @@ public class SearchChambresRequestHandler : IRequestHandler<SearchChambresReques
                 PetitDejeunerInclus = c.PetitDejeunerInclus,
                 TypeChambreId = c.TypeChambreId,
                 TypeChambreNom = typeChambreNom,
+                Clients = c.Clients,
             });
         }
 

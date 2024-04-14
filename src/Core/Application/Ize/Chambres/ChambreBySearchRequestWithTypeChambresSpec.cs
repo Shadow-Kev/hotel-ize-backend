@@ -7,6 +7,7 @@ public class ChambreBySearchRequestWithTypeChambresSpec : EntitiesByPaginationFi
         : base(request) =>
         Query
             .Include(c => c.TypeChambre)
+            .Include(c => c.Clients)
             .OrderBy(c => c.Nom, !request.HasOrderBy())
             .Where(c => c.TypeChambreId.Equals(request.TypeChambreId!.Value), request.TypeChambreId.HasValue);
 }

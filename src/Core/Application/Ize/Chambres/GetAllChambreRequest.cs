@@ -9,7 +9,7 @@ public class GetAllChambreRequest : IRequest<List<ChambreDetailsDto>>
 public class GetAllChambreSpec : Specification<Chambre, ChambreDetailsDto>
 {
     public GetAllChambreSpec() =>
-        Query.Include(c => c.TypeChambre);
+        Query.Include(c => c.TypeChambre).Include(c=>c.Clients);
 }
 
 public class GetAllChambreRequestHandler : IRequestHandler<GetAllChambreRequest, List<ChambreDetailsDto>>
