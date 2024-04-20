@@ -3,28 +3,35 @@
 namespace FSH.WebApi.Domain.Ize;
 public class Vente : AuditableEntity, IAggregateRoot
 {
-    public int Quantite { get; set; }
-    public Guid ProductId { get; private set; }
-    public virtual Product Product { get; private set; } = default!;
     public Guid AgentId { get; set; }
     public virtual Agent Agent { get; set; }
-
+    public virtual ICollection<VenteProduit> VenteProduits { get; set; } = new List<VenteProduit>();
 
     public Vente() { }
 
-    public Vente(int quantite, Guid productId, Guid agentId)
+    public Vente(Guid agentId)
     {
-        Quantite = quantite;
-        ProductId = productId;
         AgentId = agentId;
     }
 
-    public Vente Update(int quantite, Guid productId, Guid agentId)
+    public Vente Update(Guid agentId)
     {
-        if (Quantite != 0 && Quantite != quantite) Quantite = quantite;
-        if (ProductId != productId && ProductId != productId) ProductId = productId;
         if (AgentId != agentId && AgentId != agentId) AgentId = agentId;
         return this;
+    }
+
+    public void AddProduct(Product product, int quantite)
+    {
+        if (product.Quantite < quantite)
+        {
+            throw new Exception("La quantité demandée est supérieure à la quantité disponible du produit");
+        }
+
+        product.Quantite -= quantite;
+        VenteProduits.Add(new VenteProduit(product, quantite, product.Prix)
+        {
+            VenteId = this.Id
+        });
     }
 
 }

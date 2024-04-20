@@ -23,6 +23,7 @@ public class ApplicationDbContext : BaseDbContext
     public DbSet<Agent> Agents => Set<Agent>();
     public DbSet<Client> Clients => Set<Client>();
     public DbSet<Vente> Ventes => Set<Vente>();
+    public DbSet<VenteProduit> VenteProduits => Set<VenteProduit>();
     public DbSet<TypeReservation> TypeReservations => Set<TypeReservation>();
     public DbSet<Reservation> Reservations => Set<Reservation>();
 
