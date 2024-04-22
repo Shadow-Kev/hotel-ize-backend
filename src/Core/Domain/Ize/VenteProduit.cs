@@ -10,6 +10,8 @@ public class VenteProduit : AuditableEntity
     public Guid VenteId { get; set; }
     public virtual Vente Vente { get; set; } = default!;
 
+    public VenteProduit() { }
+
     public VenteProduit(Product product, int quantite, decimal prix)
     {
         Product = product;
