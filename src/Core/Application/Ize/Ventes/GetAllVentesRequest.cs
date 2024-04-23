@@ -1,17 +1,15 @@
-﻿using FSH.WebApi.Application.Ize.Chambres;
-using FSH.WebApi.Domain.Ize;
+﻿using FSH.WebApi.Domain.Ize;
 
 namespace FSH.WebApi.Application.Ize.Ventes;
 public class GetAllVentesRequest : IRequest<List<VenteDetailsDto>>
 {
-    public GetAllVentesRequest() {}
+    public GetAllVentesRequest() { }
 }
 
 public class GetAllVenteSpec : Specification<Vente, VenteDetailsDto>
 {
     public GetAllVenteSpec() =>
-        Query.Include(c => c.Product)
-        .Include(c => c.Agent);
+        Query.Include(v => v.Agent);
 }
 
 public class GetAllVentesRequestHandler : IRequestHandler<GetAllVentesRequest, List<VenteDetailsDto>>
