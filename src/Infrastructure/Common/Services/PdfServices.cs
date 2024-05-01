@@ -1,6 +1,7 @@
 ﻿using FSH.WebApi.Application.Common.Interfaces;
 using FSH.WebApi.Application.Ize.Ventes;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -11,11 +12,12 @@ public class PdfServices : IPdfService
 {
     private readonly IMediator _mediator;
     private readonly ICurrentUser _currentUser;
-
-    public PdfServices(IMediator mediator, ICurrentUser currentUser)
+    private readonly IConfiguration _config;
+    public PdfServices(IMediator mediator, ICurrentUser currentUser, IConfiguration config)
     {
         _mediator = mediator;
         _currentUser = currentUser;
+        _config = config;
 
         QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
     }
@@ -53,13 +55,16 @@ public class PdfServices : IPdfService
     public void ComposeHeader(IContainer container, VenteDetailsDto model)
     {
         var titleStyle = TextStyle.Default.FontSize(20).SemiBold().FontColor(Colors.Blue.Medium);
+        var rootPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
+        var logoPath = _config.GetValue<string>("Printing:logo");
+        var logo = Path.Combine(rootPath, "wwwroot", logoPath);
 
         container.Row(row =>
         {
-            row.ConstantItem(100).Height(50).Placeholder();
+            row.ConstantItem(100).Height(50).Image($"{logo}").FitHeight();
 
             row.RelativeItem(2).AlignCenter().Text("HOTEL IZE").FontSize(20);
-            row.RelativeItem(1).AlignRight().Text($"Kpalime le {DateTime.UtcNow}").FontSize(12);
+            row.RelativeItem(1).AlignRight().Text($"Kpalime le {DateTime.UtcNow.ToString("d")}").FontSize(12);
         });
     }
 
