@@ -22,13 +22,13 @@ public class PdfServices : IPdfService
         QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
     }
 
-    public async Task<Guid> GenerateBarInvoice(Guid id)
+    public async Task<string> GenerateBarInvoice(Guid id)
     {
         var venteRequest = new GetVenteRequest(id);
         var vente = await _mediator.Send(venteRequest);
         if (vente is null)
         {
-            return Guid.Empty;
+            return string.Empty;
         }
 
         var document = Document.Create(doc =>
@@ -46,10 +46,14 @@ public class PdfServices : IPdfService
                 });
             });
         });
+        var pdfFileName = $"facture_vente_{vente.Id}.pdf";
+        var pdfFilePath = Path.Combine("wwwroot", "pdfs", pdfFileName);
 
-        document.ShowInPreviewer();
+        document.GeneratePdfAndShow();
+        //document.GeneratePdf(pdfFilePath);
+        //document.ShowInPreviewer();
 
-        return id;
+        return $"pdfs/{pdfFileName}";
     }
 
     public void ComposeHeader(IContainer container, VenteDetailsDto model)

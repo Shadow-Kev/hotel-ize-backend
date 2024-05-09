@@ -54,6 +54,7 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Databases\Host\" />
+      <Folder Include="wwwroot\pdfs\" />
     </ItemGroup>
     <ItemGroup>
       <None Include="wwwroot\logo.jpg" />
