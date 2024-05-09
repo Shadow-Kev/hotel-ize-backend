@@ -1,4 +1,5 @@
-﻿using FSH.WebApi.Application.Ize.Clients;
+﻿using FSH.WebApi.Application.Catalog.Products;
+using FSH.WebApi.Application.Ize.Clients;
 
 namespace FSH.WebApi.Host.Controllers.Ize;
 
@@ -52,5 +53,14 @@ public class ClientsController : VersionedApiController
     public Task<Guid> CreateAsync(CreateClientRequest request)
     {
         return Mediator.Send(request);
+    }
+
+    [HttpPost("export")]
+    [MustHavePermission(FSHAction.Export, FSHResource.Clients)]
+    [OpenApiOperation("Export clients", "")]
+    public async Task<FileResult> ExportAsync(ExportClientsRequest filter)
+    {
+        var result = await Mediator.Send(filter);
+        return File(result, "application/octet-stream", "ClientExports");
     }
 }
