@@ -7,5 +7,7 @@ public class VenteBySearchRequestWithProduitSpec : EntitiesByPaginationFilterSpe
          : base(request) =>
         Query
             .Include(v => v.Agent)
-            .Where(v => v.AgentId.Equals(request.AgentId), request.AgentId.HasValue);
+            .Where(v => v.AgentId.Equals(request.AgentId), request.AgentId.HasValue)
+            .Include(v => v.Client)
+            .Where(v => v.ClientId.Equals(request.ClientId), request.ClientId.HasValue);
 }

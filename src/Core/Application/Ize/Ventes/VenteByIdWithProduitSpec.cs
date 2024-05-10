@@ -6,5 +6,6 @@ public class VenteByIdWithProduitSpec : Specification<Vente, VenteDetailsDto>, I
     public VenteByIdWithProduitSpec(Guid id) =>
         Query
             .Where(c => c.Id == id)
-            .Include(c => c.Agent);
+            .Include(c => c.Agent)
+            .Include(c => c.Client);
 }
