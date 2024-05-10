@@ -1,22 +1,31 @@
 ﻿using FSH.WebApi.Domain.Catalog;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FSH.WebApi.Domain.Ize;
 public class Vente : AuditableEntity, IAggregateRoot
 {
     public Guid AgentId { get; set; }
     public virtual Agent Agent { get; set; }
+    public Guid? ClientId { get; private set; }
+    public virtual Client? Client { get; private set; }
     public virtual ICollection<VenteProduit> VenteProduits { get; set; } = new List<VenteProduit>();
 
     public Vente() { }
 
-    public Vente(Guid agentId)
+    public Vente(Guid agentId, Guid? clientId)
     {
         AgentId = agentId;
+        ClientId = clientId;
     }
 
-    public Vente Update(Guid agentId)
+    public Vente Update(Guid agentId, Guid? clientId)
     {
-        if (AgentId != agentId && AgentId != agentId) AgentId = agentId;
+        if (AgentId != agentId && ClientId != clientId)
+        {
+            AgentId = agentId;
+            ClientId = clientId;
+        }
+
         return this;
     }
 

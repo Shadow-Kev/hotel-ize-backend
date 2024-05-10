@@ -8,6 +8,7 @@ namespace FSH.WebApi.Application.Ize.Ventes;
 public class CreateVenteRequest : IRequest<Guid>
 {
     public Guid AgentId { get; set; }
+    public Guid? ClientId { get; set; }
     public List<ProductQuantite> Products { get; set; }
 
     public class ProductQuantite
@@ -28,7 +29,7 @@ public class CreateVenteRequestHandler : IRequestHandler<CreateVenteRequest, Gui
     }
     public async Task<Guid> Handle(CreateVenteRequest request, CancellationToken cancellationToken)
     {
-        var vente = new Vente(request.AgentId);
+        var vente = new Vente(request.AgentId, request.ClientId);
         foreach (var pq in request.Products)
         {
             var product = await _productRepository.GetByIdAsync(pq.ProductId);

@@ -5,5 +5,6 @@ public class VenteDetailsDto : IDto
 {
     public Guid Id { get; set; }
     public Agent Agent { get; set; } = default!;
+    public Client? Client { get; set; }
     public ICollection<VenteProduitDto> VenteProduits { get; set; } = new List<VenteProduitDto>();
 }

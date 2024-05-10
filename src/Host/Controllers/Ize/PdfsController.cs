@@ -21,4 +21,15 @@ public class PdfsController : VersionedApiController
             return Ok(result);
         return BadRequest();
     }
+
+    [HttpGet("generateFactureClient/{id:Guid}")]
+    [MustHavePermission(FSHAction.View, FSHResource.Ventes)]
+    [OpenApiOperation("Générer la facture du client", "")]
+    public async Task<IActionResult> PrintFactureClient(Guid id)
+    {
+        var result = await _pdfService.GenerateClientInvoice(id);
+        if (result != string.Empty)
+            return Ok(result);
+        return BadRequest();
+    }
 }

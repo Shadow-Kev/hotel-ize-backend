@@ -4,6 +4,7 @@ namespace FSH.WebApi.Application.Ize.Ventes;
 public class SearchVentesRequest : PaginationFilter, IRequest<PaginationResponse<VenteDto>>
 {
     public Guid? AgentId { get; set; }
+    public Guid? ClientId { get; set; }
 }
 
 public class SearchVentesRequestHandler : IRequestHandler<SearchVentesRequest, PaginationResponse<VenteDto>>
