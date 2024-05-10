@@ -6,5 +6,7 @@ public class VenteDto : IDto
     public Guid Id { get; set; }
     public Guid AgentId { get; set; }
     public string AgentNom { get; set; }
+    public Guid ClientId { get; set; }
+    public string ClientNom { get; set; }
     public ICollection<VenteProduitDto> VenteProduits { get; set; } = new List<VenteProduitDto>();
 }

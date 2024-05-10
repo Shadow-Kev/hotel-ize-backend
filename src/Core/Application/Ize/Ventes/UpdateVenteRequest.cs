@@ -6,6 +6,7 @@ public class UpdateVenteRequest : IRequest<Guid>
 {
     public Guid Id { get; set; }
     public Guid AgentId { get; set; }
+    public Guid ClientId { get; set; }
     public List<ProductQuantite> Products { get; set; }
 
     public class ProductQuantite
@@ -32,7 +33,7 @@ public class UpdateVenteRequestValidator : IRequestHandler<UpdateVenteRequest, G
         var vente = await _repository.GetByIdAsync(request.Id, cancellationToken);
         _ = vente ?? throw new NotFoundException(_localizer["Vente {0} non trouvé", request.Id]);
 
-        var updatedVente = vente.Update(request.AgentId);
+        var updatedVente = vente.Update(request.AgentId,request.ClientId);
         if (request.Products is not null)
         {
             updatedVente.VenteProduits.Clear();

@@ -9,7 +9,8 @@ public class GetAllVentesRequest : IRequest<List<VenteDetailsDto>>
 public class GetAllVenteSpec : Specification<Vente, VenteDetailsDto>
 {
     public GetAllVenteSpec() =>
-        Query.Include(v => v.Agent);
+        Query.Include(v => v.Agent)
+             .Include(v => v.Client);
 }
 
 public class GetAllVentesRequestHandler : IRequestHandler<GetAllVentesRequest, List<VenteDetailsDto>>
