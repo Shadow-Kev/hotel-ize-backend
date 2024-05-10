@@ -50,7 +50,14 @@
         </None>
     </ItemGroup>
     <ItemGroup>
+      <_ContentIncludedByDefault Remove="Configurations\print.json" />
+    </ItemGroup>
+    <ItemGroup>
       <Folder Include="Databases\Host\" />
+      <Folder Include="wwwroot\pdfs\" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="wwwroot\logo.jpg" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Update="Roslynator.Analyzers" Version="4.2.0">

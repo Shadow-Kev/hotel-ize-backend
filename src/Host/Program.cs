@@ -25,6 +25,7 @@ try
 
     app.UseInfrastructure(builder.Configuration);
     app.MapEndpoints();
+    app.UseStaticFiles();
     app.Run();
 }
 catch (Exception ex) when (!ex.GetType().Name.Equals("HostAbortedException", StringComparison.Ordinal))
