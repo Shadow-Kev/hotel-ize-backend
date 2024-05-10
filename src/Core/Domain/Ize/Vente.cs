@@ -6,25 +6,26 @@ public class Vente : AuditableEntity, IAggregateRoot
 {
     public Guid AgentId { get; set; }
     public virtual Agent Agent { get; set; }
-    public Guid ClientId { get; private set; }
-    public virtual Client Client { get; private set; }
+    public Guid? ClientId { get; private set; }
+    public virtual Client? Client { get; private set; }
     public virtual ICollection<VenteProduit> VenteProduits { get; set; } = new List<VenteProduit>();
 
     public Vente() { }
 
-    public Vente(Guid agentId, Guid clientId)
+    public Vente(Guid agentId, Guid? clientId)
     {
         AgentId = agentId;
         ClientId = clientId;
     }
 
-    public Vente Update(Guid agentId, Guid clientId)
+    public Vente Update(Guid agentId, Guid? clientId)
     {
         if (AgentId != agentId && ClientId != clientId)
         {
             AgentId = agentId;
             ClientId = clientId;
         }
+
         return this;
     }
 

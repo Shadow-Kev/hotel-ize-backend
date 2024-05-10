@@ -8,7 +8,7 @@ namespace FSH.WebApi.Application.Ize.Ventes;
 public class CreateVenteRequest : IRequest<Guid>
 {
     public Guid AgentId { get; set; }
-    public Guid ClientId { get; set; }
+    public Guid? ClientId { get; set; }
     public List<ProductQuantite> Products { get; set; }
 
     public class ProductQuantite
