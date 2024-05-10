@@ -17,7 +17,7 @@ public class PdfsController : VersionedApiController
     public async Task<IActionResult> PrintFactureVente(Guid id)
     {
         var result = await _pdfService.GenerateBarInvoice(id);
-        if (result == id)
+        if (result != string.Empty)
             return Ok(result);
         return BadRequest();
     }
