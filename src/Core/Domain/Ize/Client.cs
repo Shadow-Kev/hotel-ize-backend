@@ -29,6 +29,8 @@ public class Client : AuditableEntity, IAggregateRoot
     [ForeignKey(nameof(ChambreId))]
     public virtual Chambre? Chambre { get; private set; }
     public Guid? ChambreId { get; private set; }
+    public virtual ICollection<Vente>? Ventes { get; private set; } = new HashSet<Vente>();
+
 
     public Client(string nom, string? prenom, string? nomDeJeuneFille, string? lieuDeNaissance, string? nationalite, string? profession, string? domicile, string? motifDuVoyage, string? venantDe, string? allantA, DateTime? dateArrive, DateTime? dateDepart, string? identite, DateTime? dateIdentiteDelivreeLe, string? contact, string? email, string? personneAPrevenir, Guid agentId, Guid? chambreId)
     {

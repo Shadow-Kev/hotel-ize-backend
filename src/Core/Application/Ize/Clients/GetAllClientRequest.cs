@@ -10,7 +10,8 @@ public class GetAllClientSpec : Specification<Client, ClientDetailsDto>
 {
     public GetAllClientSpec() =>
         Query.Include(c => c.Agent)
-        .Include(c => c.Chambre);
+        .Include(c => c.Chambre)
+        .ThenInclude(t => t.TypeChambre);
 }
 
 public class GetAllClientRequestHandler : IRequestHandler<GetAllClientRequest, List<ClientDetailsDto>>

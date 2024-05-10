@@ -1,4 +1,6 @@
-﻿namespace FSH.WebApi.Application.Ize.Clients;
+﻿using FSH.WebApi.Application.Ize.Ventes;
+
+namespace FSH.WebApi.Application.Ize.Clients;
 public class ClientDto : IDto
 {
     public Guid Id { get; set; }
@@ -22,4 +24,5 @@ public class ClientDto : IDto
     public string AgentNom { get; set; } = default!;
     public Guid? ChambreId { get; set; }
     public string? ChambreNom { get; set; }
+    public virtual ICollection<VenteDto>? Ventes { get; set; } = new HashSet<VenteDto>();
 }
