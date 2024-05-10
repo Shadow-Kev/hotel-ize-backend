@@ -1,5 +1,7 @@
 ﻿using FSH.WebApi.Application.Common.Interfaces;
+using FSH.WebApi.Application.Ize.Clients;
 using FSH.WebApi.Application.Ize.Ventes;
+using FSH.WebApi.Domain.Ize;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using QuestPDF.Fluent;
@@ -126,5 +128,21 @@ public class PdfServices : IPdfService
                 }
             }
         });
+    }
+
+    public async Task<string> GenerateClientInvoice(Guid id)
+    {
+        var clientRequest = new GetClientRequest(id);
+        var client = await _mediator.Send(clientRequest);
+
+        if (client is null)
+        {
+            return string.Empty;
+        }
+
+        var pdfFileName = $"facture_client_{client.Nom}.pdf";
+        var pdfFilePath = Path.Combine("wwwroot", "pdfs", pdfFileName);
+
+        return $"pdfs/{pdfFileName}";
     }
 }
