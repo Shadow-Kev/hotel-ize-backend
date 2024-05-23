@@ -45,6 +45,14 @@ public class ChambresController : VersionedApiController
         return Mediator.Send(new GetAllChambreRequest());
     }
 
+    [HttpGet("{DateReservation:DateTime}")]
+    [MustHavePermission(FSHAction.View, FSHResource.Chambres)]
+    [OpenApiOperation("Get toutes les Chambres disponibles pour reservation ", "")]
+    public Task<List<ChambreDetailsDto>> GetAvailableChambreAsync(DateTime DateReservation)
+    {
+        return Mediator.Send(new GetAvailableChambreRequest() { DateReservation = DateReservation });
+    }
+
     [HttpDelete("{id:guid}")]
     [MustHavePermission(FSHAction.Delete, FSHResource.Chambres)]
     [OpenApiOperation("Supprimer un Chambre", "")]
