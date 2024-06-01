@@ -376,8 +376,8 @@ public class PdfServices : IPdfService
         var pdfFileName = $"facture_client_{client.Nom}.pdf";
         var pdfFilePath = Path.Combine("wwwroot", "pdfs", pdfFileName);
 
-        document.ShowInPreviewer();
-        //document.GeneratePdfAndShow();
+        //document.ShowInPreviewer();
+        document.GeneratePdfAndShow();
 
         return $"pdfs/{pdfFileName}";
     }
