@@ -16,6 +16,10 @@ public class SendStatsChangedNotificationHandler :
     IEventNotificationHandler<EntityDeletedEvent<Chambre>>,
     IEventNotificationHandler<EntityCreatedEvent<TypeChambre>>,
     IEventNotificationHandler<EntityDeletedEvent<TypeChambre>>,
+    IEventNotificationHandler<EntityCreatedEvent<TypeReservation>>,
+    IEventNotificationHandler<EntityDeletedEvent<TypeReservation>>,
+    IEventNotificationHandler<EntityCreatedEvent<Reservation>>,
+    IEventNotificationHandler<EntityDeletedEvent<Reservation>>,
     IEventNotificationHandler<EntityCreatedEvent<Agent>>,
     IEventNotificationHandler<EntityDeletedEvent<Agent>>,
     IEventNotificationHandler<ApplicationRoleCreatedEvent>,
@@ -59,6 +63,18 @@ public class SendStatsChangedNotificationHandler :
         SendStatsChangedNotification(notification.Event, cancellationToken);
 
     public Task Handle(EventNotification<EntityDeletedEvent<TypeChambre>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityCreatedEvent<TypeReservation>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityDeletedEvent<TypeReservation>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityCreatedEvent<Reservation>> notification, CancellationToken cancellationToken) =>
+        SendStatsChangedNotification(notification.Event, cancellationToken);
+
+    public Task Handle(EventNotification<EntityDeletedEvent<Reservation>> notification, CancellationToken cancellationToken) =>
         SendStatsChangedNotification(notification.Event, cancellationToken);
 
     public Task Handle(EventNotification<EntityCreatedEvent<Agent>> notification, CancellationToken cancellationToken) =>
