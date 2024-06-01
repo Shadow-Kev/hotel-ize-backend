@@ -29,7 +29,7 @@ public class CreateReservationRequestHandler : IRequestHandler<CreateReservation
     {
 
         var reservation = new Reservation(request.Nom, request.Prenom, request.ChambreId, request.TypeReservationId, request.StatutReservation,  request.DateArrive);
-        if(request.StatutReservation == Statut.RESERVE && request.ChambreId != null)
+        if(request.StatutReservation == Statut.RESERVE && request.ChambreId != null && request.DateArrive == DateTime.Now)
         {
             await _mediator.Send(new UpdateChambreStatutRequest
             {
