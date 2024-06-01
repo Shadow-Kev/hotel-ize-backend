@@ -1,4 +1,5 @@
-﻿using FSH.WebApi.Domain.Common.Events;
+﻿using FSH.WebApi.Application.Ize.Chambres;
+using FSH.WebApi.Domain.Common.Events;
 using FSH.WebApi.Domain.Ize;
 using System.ComponentModel.DataAnnotations;
 
@@ -32,12 +33,14 @@ public class UpdateClientRequest : IRequest<Guid>
 public class UpdateClientRequestHandler : IRequestHandler<UpdateClientRequest, Guid>
 {
     private readonly IRepository<Client> _repository;
+    private readonly IMediator _mediator;
     private readonly IStringLocalizer _localizer;
 
-    public UpdateClientRequestHandler(IRepository<Client> repository, IStringLocalizer<UpdateClientRequestHandler> localizer)
+    public UpdateClientRequestHandler(IRepository<Client> repository, IStringLocalizer<UpdateClientRequestHandler> localizer, IMediator mediator)
     {
         _repository = repository;
         _localizer = localizer;
+        _mediator = mediator;
     }
     public async Task<Guid> Handle(UpdateClientRequest request, CancellationToken cancellationToken)
     {
@@ -47,6 +50,14 @@ public class UpdateClientRequestHandler : IRequestHandler<UpdateClientRequest, G
             request.Profession, request.Domicile, request.MotifDuVoyage, request.VenantDe, request.AllantA, request.DateArrive,
             request.DateDepart, request.Identite, request.DateIdentiteDelivreeLe, request.Contact, request.Email, request.PersonneAPrevenir,
             request.AgentId, request.ChambreId);
+        if(request.ChambreId != null)
+        {
+            await _mediator.Send(new UpdateChambreStatutRequest
+            {
+                Id = (DefaultIdType)request.ChambreId,
+                Disponible = false
+            });
+        }
         client.DomainEvents.Add(EntityUpdatedEvent.WithEntity(client));
         await _repository.UpdateAsync(updatedClient, cancellationToken);
 
