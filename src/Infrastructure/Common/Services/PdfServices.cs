@@ -248,46 +248,44 @@ public class PdfServices : IPdfService
                 }
             });
 
-            if (model.Ventes is not null)
+            int index = 1;
+            int nbreNuite = CalculerNombreDeNuites(model);
+            int tsp = 1000 * nbreNuite;
+
+            // Ajoutez ici la ligne pour la TSPT
+            table.Cell().Element(CellStyle).Text("TSPT");
+            table.Cell().Element(CellStyle).Text("");
+            table.Cell().Element(CellStyle).AlignRight().Text("1000FCFA");
+            table.Cell().Element(CellStyle).AlignRight().Text("");
+            table.Cell().Element(CellStyle).AlignRight().Text($"{tsp}FCFA");
+
+            // Ajoutez ici la ligne pour la chambre
+            table.Cell().Element(CellStyle).Text("Chambre");
+            table.Cell().Element(CellStyle).Text(model.Chambre?.Nom ?? "");
+            table.Cell().Element(CellStyle).AlignRight().Text($"{Math.Round((decimal)model.Chambre?.Prix!)}FCFA");
+            table.Cell().Element(CellStyle).AlignRight().Text("");
+            table.Cell().Element(CellStyle).AlignRight().Text($"{CalculerPrixHT((decimal)model.Chambre?.Prix!, nbreNuite)}FCFA");
+            static IContainer CellStyle(IContainer container)
             {
-                int index = 1;
-                int nbreNuite = CalculerNombreDeNuites(model);
-                int tsp = 1000 * nbreNuite;
-                foreach (var vente in model.Ventes)
+                return container.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
+            }
+
+            foreach (var vente in model.Ventes)
+            {
+                if (vente.VenteProduits is not null)
                 {
-                    // Ajoutez ici la ligne pour la TSPT
-                    table.Cell().Element(CellStyle).Text("TSPT");
-                    table.Cell().Element(CellStyle).Text("");
-                    table.Cell().Element(CellStyle).AlignRight().Text("1000FCFA");
-                    table.Cell().Element(CellStyle).AlignRight().Text("");
-                    table.Cell().Element(CellStyle).AlignRight().Text($"{tsp}FCFA");
-
-                    // Ajoutez ici la ligne pour la chambre
-                    table.Cell().Element(CellStyle).Text("Chambre");
-                    table.Cell().Element(CellStyle).Text(model.Chambre?.Nom ?? "");
-                    table.Cell().Element(CellStyle).AlignRight().Text($"{Math.Round((decimal)model.Chambre?.Prix!)}FCFA");
-                    table.Cell().Element(CellStyle).AlignRight().Text("");
-                    table.Cell().Element(CellStyle).AlignRight().Text($"{CalculerPrixHT((decimal)model.Chambre?.Prix!, nbreNuite)}FCFA");
-                    static IContainer CellStyle(IContainer container)
+                    foreach (var item in vente.VenteProduits)
                     {
-                        return container.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
-                    }
+                        table.Cell().Element(CellStyle).Text(index++.ToString());
+                        table.Cell().Element(CellStyle).Text(item.Product?.Name ?? "");
+                        table.Cell().Element(CellStyle).AlignRight().Text($"{Math.Round(item.Prix)}FCFA");
+                        table.Cell().Element(CellStyle).AlignRight().Text(item.Quantite.ToString());
+                        table.Cell().Element(CellStyle).AlignRight().Text($"{Math.Round(item.Prix * item.Quantite)}FCFA");
 
-                    if (vente.VenteProduits is not null)
-                    {
-                        foreach (var item in vente.VenteProduits)
-                        {
-                            table.Cell().Element(CellStyle).Text(index++.ToString());
-                            table.Cell().Element(CellStyle).Text(item.Product?.Name ?? "");
-                            table.Cell().Element(CellStyle).AlignRight().Text($"{Math.Round(item.Prix)}FCFA");
-                            table.Cell().Element(CellStyle).AlignRight().Text(item.Quantite.ToString());
-                            table.Cell().Element(CellStyle).AlignRight().Text($"{Math.Round(item.Prix * item.Quantite)}FCFA");
-
-                            //static IContainer CellStyle(IContainer container)
-                            //{
-                            //    return container.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
-                            //}
-                        }
+                        //static IContainer CellStyle(IContainer container)
+                        //{
+                        //    return container.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
+                        //}
                     }
                 }
             }
