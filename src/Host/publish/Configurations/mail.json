@@ -1,0 +1,10 @@
+{
+  "MailSettings": {
+    "DisplayName": "Hotel IZE",
+    "From": "mukesh@fullstackhero.net",
+    "Host": "smtp.ethereal.email",
+    "Password": "uJRMwpeSV8UqmK98s9",
+    "Port": 587,
+    "UserName": "chet.bradtke@ethereal.email"
+  }
+}

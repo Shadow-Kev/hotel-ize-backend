@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Migrators.PostgreSQL</name>
+    </assembly>
+    <members>
+        <member name="T:Migrators.PostgreSQL.Migrations.Application.initialEntitesSetup">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.initialEntitesSetup.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.initialEntitesSetup.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.initialEntitesSetup.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Migrators.PostgreSQL.Migrations.Application.RefactorProduct">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.RefactorProduct.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.RefactorProduct.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.RefactorProduct.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Migrators.PostgreSQL.Migrations.Application.addVenteTable">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addVenteTable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addVenteTable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addVenteTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Migrators.PostgreSQL.Migrations.Application.addVenteTable2">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addVenteTable2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addVenteTable2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addVenteTable2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Migrators.PostgreSQL.Migrations.Application.addEntities">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addEntities.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addEntities.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addEntities.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Migrators.PostgreSQL.Migrations.Application.fixAddEntitiesWithNullable">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.fixAddEntitiesWithNullable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.fixAddEntitiesWithNullable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.fixAddEntitiesWithNullable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Migrators.PostgreSQL.Migrations.Application.updateVenteFeature">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.updateVenteFeature.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.updateVenteFeature.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.updateVenteFeature.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Migrators.PostgreSQL.Migrations.Application.addClientToVenteFeature">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addClientToVenteFeature.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addClientToVenteFeature.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Migrators.PostgreSQL.Migrations.Application.addClientToVenteFeature.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
